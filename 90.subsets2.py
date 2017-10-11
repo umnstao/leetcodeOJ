@@ -10,9 +10,10 @@ class Solution(object):
         self.helper(ret, nums, 0, [])
         return ret
     def helper(self, ret, nums, k, path):
-        if path not in ret:
-            ret.append(path[:])
+        ret.append(path[:])
         for i in xrange(k, len(nums)):
+            if i!= k and nums[i] == nums[i-1]:
+                continue
             path += [nums[i]]
             self.helper(ret, nums, i+1, path)
             path.pop()
